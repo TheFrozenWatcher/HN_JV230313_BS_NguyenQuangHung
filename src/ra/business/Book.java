@@ -85,7 +85,7 @@ public class Book {
     public Float calInterest(double importPrice, double exportPrice) {
         return (float) (exportPrice - importPrice);
     }
-
+//  Phương thức nhập thông tin
     public void inputData() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập thông tin sản phẩm");
@@ -115,13 +115,13 @@ public class Book {
 //        Nhập mô tả
         do {System.out.println("Nhập mô tả:");
             this.descriptions = sc.nextLine();
-        } while (this.descriptions.isEmpty());
+        } while (this.descriptions.isEmpty()||this.descriptions.length()<10);
 //      Nhập giá nhập
         do {
             System.out.println("Nhập giá nhập (phải lớn hơn 0):");
             while (!sc.hasNextDouble()) {
                 System.out.println("Vui lòng nhập giá nhập là số:");
-                sc.next(); // consume invalid input
+                sc.next(); // hủy nhập lại
             }
             this.importPrice = sc.nextDouble();
         } while (this.importPrice <= 0);
@@ -130,7 +130,7 @@ public class Book {
             System.out.println("Nhập giá xuất (phải lớn hơn 1.2 lần giá nhập):");
             while (!sc.hasNextDouble()) {
                 System.out.println("Vui lòng nhập giá xuất là số:");
-                sc.next(); // consume invalid input
+                sc.next(); // hủy nhập lại
             }
             this.exportPrice = sc.nextDouble();
         } while (this.exportPrice <= 1.2 * this.importPrice);
@@ -150,6 +150,7 @@ public class Book {
         this.interest = calInterest(this.importPrice, this.exportPrice);
     }
 
+//    Phương thức hiện thông tin
     public void displayData() {
         System.out.println("Mã sách: " + bookId
                 + "\nTên sách: " + bookName
